@@ -1,0 +1,20 @@
+[[language]]
+name = "nix"
+formatter = { command = "treefmt", args = ["--stdin", "foo.nix"] }
+
+[[language]]
+name = "markdown"
+formatter = { command = "treefmt", args = ["--stdin", "foo.md"] }
+
+[[language]]
+name = "toml"
+formatter = { command = "treefmt", args = ["--stdin", "foo.toml"] }
+
+[[language]]
+name = "bash"
+formatter = { command = "treefmt", args = [
+  "--formatters",
+  "shell-fmt",
+  "--stdin",
+  "foo.sh",
+] }
