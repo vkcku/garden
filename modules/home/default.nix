@@ -53,7 +53,7 @@ in
           */
           mkPath =
             filename: pathOrString:
-            if (builtins.isPath pathOrString) then pathOrString else (pkgs.writeText filename pathOrString);
+            if (builtins.isString pathOrString) then (pkgs.writeText filename pathOrString) else pathOrString;
 
           /**
             Convert from
