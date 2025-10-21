@@ -27,4 +27,18 @@
     builtins.map (f: lib.path.append path f) (
       builtins.attrNames (lib.attrsets.filterAttrs isImport (builtins.readDir path))
     );
+
+  /**
+    Poor man's attempt to make it a bit harder for scrapers to get my emails.
+  */
+  mkEmail =
+    {
+      local,
+      domain,
+      tld ? ".com",
+    }:
+    let
+      sep = "@";
+    in
+    "${local}${sep}${domain}${tld}";
 }
