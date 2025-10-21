@@ -11,6 +11,7 @@ in
       user.hyprland.enable = true;
       user.ghostty.enable = true;
       user.ssh-agent.enable = true;
+      user.zen-browser.enable = true;
       user.nushell = {
         enableStarship = true;
         enableZoxide = true;
