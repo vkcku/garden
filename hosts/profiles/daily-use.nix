@@ -8,6 +8,7 @@ in
     garden = {
       services.networkmanager.enable = true;
 
+      user.hyprland.enable = true;
       user.ghostty.enable = true;
       user.ssh-agent.enable = true;
       user.nushell = {

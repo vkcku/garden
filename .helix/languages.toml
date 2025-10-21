@@ -18,3 +18,10 @@ formatter = { command = "treefmt", args = [
   "--stdin",
   "foo.sh",
 ] }
+
+[[language]]
+name = "hyprlang"
+file-types = [
+  { glob = "modules/home/hyprland/*.conf" },
+  { glob = "hyprland.conf" },
+]
