@@ -1,6 +1,10 @@
 { ... }:
 {
   # keep-sorted start block=yes newline_separated=yes
+  garden = {
+    profile = "daily-use";
+  };
+
   imports = [
     ../common.nix
     ./disk.nix

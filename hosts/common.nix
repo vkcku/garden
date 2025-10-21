@@ -11,7 +11,11 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  imports = [ ../modules ];
+  imports = [
+    ../modules
+    ./profiles/server.nix
+    ./profiles/daily-use.nix
+  ];
 
   nix = {
     # keep-sorted start block=yes newline_separated=yes
