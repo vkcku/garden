@@ -25,6 +25,12 @@ let
     alias cdi = __zoxide_zi
   '';
 
+  sshAgent = ''
+    load-env {
+      SSH_AUTH_SOCK: ($env.XDG_RUNTIME_DIR | path join "ssh-agent.sock")
+    }
+  '';
+
   nushellEnv = ''
     ${lib.strings.optionalString cfg.enableZoxide zoxideEnv}
   '';
@@ -32,6 +38,7 @@ let
   nushellConfig = ''
     ${builtins.readFile ./config.nu}
 
+    ${lib.strings.optionalString config.garden.user.ssh-agent.enable sshAgent}
     ${lib.strings.optionalString cfg.enableStarship starship}
     ${lib.strings.optionalString cfg.enableZoxide zoxideConfig}
   '';

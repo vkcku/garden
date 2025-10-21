@@ -8,6 +8,8 @@ in
     garden = {
       services.networkmanager.enable = true;
 
+      user.ssh-agent.enable = true;
+
       user.nushell = {
         enableStarship = true;
         enableZoxide = true;
