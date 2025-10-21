@@ -16,6 +16,7 @@
 
   garden = {
     user.nushell.enable = true;
+    user.helix.enable = true;
   };
 
   hjem = {
