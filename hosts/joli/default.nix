@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "ares";
+  networking.hostName = "joli";
 
   # DO NOT MODIFY.
   system.stateVersion = "25.11";
