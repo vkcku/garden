@@ -10,7 +10,8 @@ let
   enable = config.garden.user.enable && cfg.enable;
 
   starship = ''
-    ${pkgs.starship}/bin/starship init nu | supersave --force ($nu.data-dir | path join "vendor/autoload/starship.nu")
+    mkdir ($nu.data-dir | path join "vendor/autoload")
+    ${pkgs.starship}/bin/starship init nu | save --force ($nu.data-dir | path join "vendor/autoload/starship.nu")
   '';
 
   zoxideEnv = ''

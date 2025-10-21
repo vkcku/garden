@@ -16,12 +16,3 @@ $env.config.cursor_shape.emacs = "line";
 load-env {
   EDITOR: "hx"
 }
-
-# Same as `save` but will also create the directories if they do not exist.
-def supersave [
-  path: string
-  --force (-f)
-] {
-  mkdir ($path | path expand | path dirname)
-  save --force=$force $path
-}
