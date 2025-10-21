@@ -14,6 +14,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  garden = {
+    user.nushell.enable = true;
+  };
+
   hjem = {
     clobberByDefault = true;
     linker = hjem.packages.${pkgs.stdenv.hostPlatform.system}.smfh;

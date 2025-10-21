@@ -9,6 +9,10 @@ let
   cfg = config.garden.user;
 in
 {
+  imports = [
+    ./nushell
+  ];
+
   options.garden.user = {
     /**
       An attreset of files to be added to `$XDG_CONFIG_HOME`. The keys must be
