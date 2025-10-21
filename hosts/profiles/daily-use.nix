@@ -4,6 +4,12 @@ let
 in
 {
   config = lib.mkIf enabled {
+    # keep-sorted start block=yes newline_separated=yes
+    garden = {
+      services.networkmanager.enable = true;
+    };
+
     time.timeZone = "Asia/Kolkata";
+    # keep-sorted end
   };
 }
