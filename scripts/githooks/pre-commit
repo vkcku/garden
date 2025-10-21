@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "info: running pre-commit"
+
+# Get all files that have been changed but not deleted.
+changed_files="$(git diff --diff-filter "d" --name-only --cached)"
+
+# If in the devshell, run it directly.
+if command -v treefmt >/dev/null; then
+  #shellcheck disable=SC2086
+  treefmt --ci $changed_files
+else
+  # Not in the devshell so run it via nix to ensure all dependencies are present.
+  #shellcheck disable=SC2086
+  nix develop --no-update-lock-file --command treefmt --ci $changed_files
+fi

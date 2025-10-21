@@ -1,0 +1,45 @@
+allow-missing-formatter = false
+on-unmatched = "fatal"
+verbose = 0
+walk = "git"
+excludes = [
+  # keep-sorted start
+  "flake.lock",
+  # keep-sorted end
+]
+
+[formatter.all-typos]
+command = "typos"
+options = ["--write-changes"]
+includes = ["*"]
+priority = -2
+
+[formatter.all-keep-sorted]
+command = "keep-sorted"
+includes = ["*"]
+priority = -1
+
+[formatter.md-fmt]
+command = "mdformat"
+options = ["--number", "--wrap", "80"]
+includes = ["*.md"]
+
+[formatter.nix-fmt]
+command = "nixfmt"
+options = ["--verify"]
+includes = ["*.nix"]
+
+[formatter.shell-fmt]
+command = "shfmt"
+options = ["--write", "--indent", "2", "--simplify", "--case-indent"]
+includes = ["scripts/*", "*.sh"]
+
+[formatter.shell-lint]
+command = "shellcheck"
+options = ["--check-sourced", "--severity", "style"]
+includes = ["scripts/*", "*.sh"]
+
+[formatter.toml-fmt]
+command = "taplo"
+options = ["format"]
+includes = ["*.toml"]
