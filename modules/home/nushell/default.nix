@@ -35,12 +35,16 @@ let
     ${lib.strings.optionalString cfg.enableZoxide zoxideEnv}
   '';
 
+  # TODO: Have a "minimal" flag that can be used to disable most of these. This would
+  # be mostly useful for servers.
   nushellConfig = ''
     ${builtins.readFile ./config.nu}
 
     ${lib.strings.optionalString config.garden.user.ssh-agent.enable sshAgent}
     ${lib.strings.optionalString cfg.enableStarship starship}
     ${lib.strings.optionalString cfg.enableZoxide zoxideConfig}
+
+    ${lib.strings.optionalString config.garden.user.hyprland.enable "source ${./garden.nu}"}
   '';
 in
 {
