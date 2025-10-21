@@ -13,7 +13,12 @@
   };
 
   outputs =
-    { disko, nixpkgs, ... }:
+    {
+      self,
+      disko,
+      nixpkgs,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -25,6 +30,11 @@
             ./hosts/${hostname}
 
             disko.nixosModules.disko
+
+            {
+              system.configurationRevision = self.rev or "dirty";
+              system.nixos.label = self.shortRev or "dirty";
+            }
           ];
 
           specialArgs = { inherit garden; };
