@@ -21,5 +21,15 @@ in
     garden.user.configFiles = {
       "hypr/hyprland.conf" = ./hyprland.conf;
     };
+
+    # https://wiki.hypr.land/Nix/Hyprland-on-NixOS/#fixing-problems-with-themes
+    programs.dconf.enable = true;
+    programs.dconf.profiles.user.databases = [
+      {
+        settings."org/gnome/desktop/interface" = {
+          gtk-theme = "Adwaita-dark";
+        };
+      }
+    ];
   };
 }
