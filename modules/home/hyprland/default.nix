@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -17,6 +18,8 @@ in
       enable = cfg.enable;
       withUWSM = true;
     };
+
+    garden.user.packages = [ pkgs.hyprpaper ];
 
     garden.user.configFiles = {
       "hypr/hyprland.conf" = ./hyprland.conf;
