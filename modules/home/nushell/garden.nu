@@ -18,6 +18,19 @@ module "garden" {
 
     hyprctl hyprpaper reload $",($wallpapers_dir | path join $selected_wallpaper)"
   }
+
+  export def "garden hyprland" [] {
+    if "HYPRLAND_INSTANCE_SIGNATURE" in $env {
+      return
+    }
+
+    uwsm check may-start
+    if $env.LAST_EXIT_CODE != 0 {
+      error make --unspanned { msg: "uwsm check failed" }
+    }
+
+    uwsm start default
+  }
 }
 
 use "garden"
