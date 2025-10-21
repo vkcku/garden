@@ -2,6 +2,7 @@
 {
   imports = [
     # keep-sorted start
+    ./home
     ./profiles.nix
     ./system
     ./user.nix
