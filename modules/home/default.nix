@@ -26,9 +26,17 @@ in
       );
       default = { };
     };
+
+    packages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [ ];
+      description = "The packages to install for the user.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
+    users.users."${garden.username}".packages = cfg.packages;
+
     hjem.users."${garden.username}" = {
       enable = true;
 
