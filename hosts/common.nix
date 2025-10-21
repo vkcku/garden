@@ -1,4 +1,9 @@
-{ garden, pkgs, ... }:
+{
+  garden,
+  pkgs,
+  hjem,
+  ...
+}:
 {
   # keep-sorted start block=yes newline_separated=yes
   boot = {
@@ -7,6 +12,11 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+  };
+
+  hjem = {
+    clobberByDefault = true;
+    linker = hjem.packages.${pkgs.stdenv.hostPlatform.system}.smfh;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -60,7 +70,7 @@
 
     # Disable root user.
     users.root.hashedPassword = "!";
-
   };
+
   # keep-sorted end
 }

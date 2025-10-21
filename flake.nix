@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +34,7 @@
       garden-secrets,
       nixpkgs,
       sops-nix,
+      hjem,
       ...
     }:
     let
@@ -42,6 +48,7 @@
             ./hosts/${hostname}
 
             disko.nixosModules.disko
+            hjem.nixosModules.default
             sops-nix.nixosModules.sops
 
             {
@@ -50,7 +57,7 @@
             }
           ];
 
-          specialArgs = { inherit garden; };
+          specialArgs = { inherit garden hjem; };
         };
 
       /**
@@ -76,6 +83,7 @@
         buildInputs = with pkgs; [
           # Development helpers.
           nil
+          nushell
 
           # Formatters/linters.
           # keep-sorted start
