@@ -9,9 +9,7 @@ let
   cfg = config.garden.user;
 in
 {
-  imports = [
-    ./nushell
-  ];
+  imports = garden.lib.getImports ./.;
 
   options.garden.user = {
     /**

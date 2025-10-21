@@ -71,6 +71,7 @@
         # have to be changed, but it keeps things simple for now.
         username = "vkcku";
         secrets = garden-secrets;
+        lib = import ./lib { lib = nixpkgs.lib; };
       };
     in
     {
