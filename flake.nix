@@ -9,6 +9,16 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    garden-secrets = {
+      url = "git+ssh://git@github.com/vkcku/garden-secrets.git?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # keep-sorted end
   };
 
@@ -16,7 +26,9 @@
     {
       self,
       disko,
+      garden-secrets,
       nixpkgs,
+      sops-nix,
       ...
     }:
     let
@@ -30,6 +42,7 @@
             ./hosts/${hostname}
 
             disko.nixosModules.disko
+            sops-nix.nixosModules.sops
 
             {
               system.configurationRevision = self.rev or "dirty";
@@ -50,6 +63,7 @@
         # If at some point multiple actual users need to be added, this entire system will
         # have to be changed, but it keeps things simple for now.
         username = "vkcku";
+        secrets = garden-secrets;
       };
     in
     {

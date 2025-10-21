@@ -20,6 +20,27 @@
         "type": "github"
       }
     },
+    "garden-secrets": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761013494,
+        "narHash": "sha256-hQ3jYjI9s55/XZ2QDCgR6ssL4s/P8dzlF8p4Wn66MlY=",
+        "ref": "main",
+        "rev": "3e541ebef2e463c4e9d939b18d756fa71af71fc0",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/vkcku/garden-secrets.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/vkcku/garden-secrets.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1760934318,
@@ -39,7 +60,29 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "nixpkgs": "nixpkgs"
+        "garden-secrets": "garden-secrets",
+        "nixpkgs": "nixpkgs",
+        "sops-nix": "sops-nix"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760998189,
+        "narHash": "sha256-ee2e1/AeGL5X8oy/HXsZQvZnae6XfEVdstGopKucYLY=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "5a7d18b5c55642df5c432aadb757140edfeb70b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     }
   },

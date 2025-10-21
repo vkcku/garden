@@ -38,14 +38,13 @@ in
 
       group = garden.username;
 
+      hashedPasswordFile = "${config.sops.secrets."passwords/vkcku".path}";
+
       isNormalUser = true;
 
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuPo1QoCFCyPPSmx0ZvKVvE4K/hQonR3zjrJlGKZnYv personal-laptop"
       ];
-
-      # TODO: Use `sops-nix`.
-      password = "supersecret";
 
       shell = pkgs.nushell;
       # keep-sorted end

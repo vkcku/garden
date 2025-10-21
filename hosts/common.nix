@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ garden, pkgs, ... }:
 {
   # keep-sorted start block=yes newline_separated=yes
   boot = {
@@ -39,6 +39,18 @@
         "nix-command"
         "flakes"
       ];
+    };
+    # keep-sorted end
+  };
+
+  sops = {
+    # keep-sorted start block=yes newline_separated=yes
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+
+    defaultSopsFile = "${garden.secrets.secretsFile}";
+
+    secrets."passwords/vkcku" = {
+      neededForUsers = true;
     };
     # keep-sorted end
   };
