@@ -8,7 +8,7 @@ module "garden" {
   # Set the given image as the wallpaper.
   #
   # If no value is provided, then a random one is selected.
-  export def "garden wallpaper" [wallpaper?: string@get-wallpapers] {
+  export def "wallpaper" [wallpaper?: string@get-wallpapers] {
     let selected_wallpaper = match $wallpaper {
       null => {
         get-wallpapers | shuffle | first
@@ -19,7 +19,7 @@ module "garden" {
     hyprctl hyprpaper reload $",($wallpapers_dir | path join $selected_wallpaper)"
   }
 
-  export def "garden hyprland" [] {
+  export def "hyprland" [] {
     if "HYPRLAND_INSTANCE_SIGNATURE" in $env {
       return
     }
