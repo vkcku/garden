@@ -49,11 +49,28 @@ let
     ${optionalString cfg.enableZoxide zoxideConfig}
 
     ${mkSourceLineIf config.garden.user.hyprland.enable ./garden.nu}
+
+    ${
+      let
+        sourceLines = builtins.map mkSourceLine cfg.sourceScripts;
+        sources = lib.strings.concatStringsSep "\n" sourceLines;
+      in
+      sources
+    }
   '';
 in
 {
   options.garden.user.nushell = {
     enable = lib.mkEnableOption "nushell";
+
+    sourceScripts = lib.mkOption {
+      type = lib.types.listOf lib.types.path;
+      default = [ ];
+      description = ''
+        A list of scripts to source at the end of `config.nu`. There are no guarantees
+        to the order they are sourced.
+      '';
+    };
 
     enableStarship = lib.mkOption {
       type = lib.types.bool;
