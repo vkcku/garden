@@ -6,8 +6,9 @@
 }:
 let
   cfg = config.garden.user.nushell;
-
   enable = config.garden.user.enable && cfg.enable;
+
+  inherit (lib.strings) optionalString;
 
   starship = ''
     mkdir ($nu.data-dir | path join "vendor/autoload")
@@ -32,7 +33,7 @@ let
   '';
 
   nushellEnv = ''
-    ${lib.strings.optionalString cfg.enableZoxide zoxideEnv}
+    ${optionalString cfg.enableZoxide zoxideEnv}
   '';
 
   # TODO: Have a "minimal" flag that can be used to disable most of these. This would
@@ -40,11 +41,11 @@ let
   nushellConfig = ''
     ${builtins.readFile ./config.nu}
 
-    ${lib.strings.optionalString config.garden.user.ssh-agent.enable sshAgent}
-    ${lib.strings.optionalString cfg.enableStarship starship}
-    ${lib.strings.optionalString cfg.enableZoxide zoxideConfig}
+    ${optionalString config.garden.user.ssh-agent.enable sshAgent}
+    ${optionalString cfg.enableStarship starship}
+    ${optionalString cfg.enableZoxide zoxideConfig}
 
-    ${lib.strings.optionalString config.garden.user.hyprland.enable "source ${./garden.nu}"}
+    ${optionalString config.garden.user.hyprland.enable "source ${./garden.nu}"}
   '';
 in
 {
