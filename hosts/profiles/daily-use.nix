@@ -6,7 +6,10 @@ in
   config = lib.mkIf enabled {
     # keep-sorted start block=yes newline_separated=yes
     garden = {
-      services.networkmanager.enable = true;
+      services = {
+        bluetooth.enable = true;
+        networkmanager.enable = true;
+      };
 
       user.hyprland.enable = true;
       user.ghostty.enable = true;
