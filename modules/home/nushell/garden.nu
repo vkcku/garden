@@ -19,6 +19,7 @@ module "garden" {
     hyprctl hyprpaper reload $",($wallpapers_dir | path join $selected_wallpaper)"
   }
 
+  # Start hyprland if it is not already running on this tty.
   export def "hyprland" [] {
     if "HYPRLAND_INSTANCE_SIGNATURE" in $env {
       return
