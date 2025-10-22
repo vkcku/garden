@@ -9,6 +9,7 @@ in
       services = {
         bluetooth.enable = true;
         networkmanager.enable = true;
+        pipewire.enable = true;
       };
 
       user.hyprland.enable = true;
