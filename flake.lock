@@ -42,11 +42,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761098916,
-        "narHash": "sha256-NKtqJii8rTYpRDui61xsuDufEE6JKG8/djVtb8TsFAA=",
+        "lastModified": 1761099643,
+        "narHash": "sha256-3c/jCSDCqGgV4WR3Ji9oMYWmc1sRTv4gGbV/lKqtZ5g=",
         "ref": "main",
-        "rev": "c62c9e76efbb1adaba0f96665299d1752b9fa352",
-        "revCount": 4,
+        "rev": "edaaa07f9a5a0ffe0d5c623d3886e07c5ae1da4e",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/vkcku/garden-secrets.git"
       },
