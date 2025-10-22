@@ -54,6 +54,7 @@
             ./hosts/${hostname}
 
             disko.nixosModules.disko
+            garden-secrets.nixosModules.default
             hjem.nixosModules.default
             sops-nix.nixosModules.sops
 
