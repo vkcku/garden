@@ -10,6 +10,9 @@ let
 
   inherit (lib.strings) optionalString;
 
+  mkSourceLine = path: "source ${path}";
+  mkSourceLineIf = cond: path: if cond then mkSourceLine path else "";
+
   starship = ''
     mkdir ($nu.data-dir | path join "vendor/autoload")
     ${pkgs.starship}/bin/starship init nu | save --force ($nu.data-dir | path join "vendor/autoload/starship.nu")
@@ -45,7 +48,7 @@ let
     ${optionalString cfg.enableStarship starship}
     ${optionalString cfg.enableZoxide zoxideConfig}
 
-    ${optionalString config.garden.user.hyprland.enable "source ${./garden.nu}"}
+    ${mkSourceLineIf config.garden.user.hyprland.enable ./garden.nu}
   '';
 in
 {
